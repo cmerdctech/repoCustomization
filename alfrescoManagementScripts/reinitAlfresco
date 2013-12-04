@@ -1,0 +1,24 @@
+#!/bin/sh
+
+ME=$(whoami)
+echo $ME
+source .environment-v90
+
+postgresql.v90 start
+
+sleep 5
+
+echo "deleting postgres database"
+
+psql -U "$ME" -d template1 << EOF
+\list
+Drop database alfresco;
+CREATE DATABASE alfresco WITH OWNER alfresco;
+\list
+EOF
+
+echo "deleting /opt/local/alfresco/alf_data"
+
+rm -R /opt/local/alfresco/alf_data/*
+
+echo "alfresco refresh is done"

@@ -1,0 +1,5 @@
+clear;
+echo "\n\n\n\n=========== HARD ========================================\n\n\n\n";
+stopAlfresco;
+reinitAlfresco;
+startAlfresco;

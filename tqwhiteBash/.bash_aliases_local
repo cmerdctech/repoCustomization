@@ -1,0 +1,10 @@
+alias alfdir="cd /opt/local/alfresco; la; pwd;"
+
+alias alfshare="cd /opt/local/alfresco/tomcat/shared/classes/alfresco; la; pwd;"
+
+alias edit='bbedit'
+
+echo '.bash_aliases_local executed'
+
+alias hidedots="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
+alias showdots="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
