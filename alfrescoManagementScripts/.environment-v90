@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export POSTGRESQL_VERSION=postgresql90
+export LD_LIBRARY_PATH=/opt/local/lib/${POSTGRESQL_VERSION}/lib
+export PATH=/opt/local/lib/${POSTGRESQL_VERSION}/bin:${PATH}

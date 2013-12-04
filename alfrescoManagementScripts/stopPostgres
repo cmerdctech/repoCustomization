@@ -1,0 +1,4 @@
+#!/bin/sh
+
+postgresql.v90 stop
+echo 'xxx';

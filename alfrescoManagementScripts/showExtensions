@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mv HIDE/extension .;
+mv HIDE/messages .;
+mv HIDE/web-extension .;
+
+ls -la .;

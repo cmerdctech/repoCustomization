@@ -1,0 +1,12 @@
+
+
+export DISPLAY=:0.0
+export EDITOR='bbedit -w'
+
+export alfrescoScriptPath=/opt/local/alfresco/tomcat/shared/classes/alfresco/managementScripts
+
+
+
+export PATH=$PATH:/opt/local/alfresco/tomcat/shared/classes/alfresco/managementScripts:
+
+echo '.bashrc_local executed'

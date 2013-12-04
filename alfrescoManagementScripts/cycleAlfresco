@@ -1,0 +1,5 @@
+clear;
+echo -e "\n\n\n\n========= SOFT ===========================================\n\n\n\n";
+stopAlfresco;
+
+startAlfresco;

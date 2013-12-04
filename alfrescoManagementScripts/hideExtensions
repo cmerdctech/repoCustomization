@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mv extension HIDE;
+mv messages HIDE;
+mv web-extension HIDE;
+
+ls -la HIDE;

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+source .environment-v90
+
+postgresql.v90 start
+
+sleep 5
+
+psql -U alfresco -d alfresco
