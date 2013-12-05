@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><alfresco-config>
+
 <!-- Document Library config section -->
+
+<!-- START cause the model to show up in default editors page 20 content tutorial -->
 	<config evaluator="string-compare" condition="DocumentLibrary">
 	
-	
-
 		<aspects>
 			<!-- Aspects that a user can see -->
 			<visible>
@@ -27,7 +28,7 @@
 	
 	
 ￼￼    </config>
-
+<!-- END cause the model to show up in default editors page 20 content tutorial -->
    <!-- cm:content type (existing nodes) -->
    <config evaluator="node-type" condition="q1:bundle1">
       <forms>
