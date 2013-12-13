@@ -1,0 +1,67 @@
+<!-- START customize editor for NEW nodes ================================================== -->
+
+
+   <!-- cm:content type (creating nodes) -->
+   <config evaluator="model-type" condition="q1:bundle1">
+      <forms>
+         <!-- Default Create Content form -->
+         <form>
+            <field-visibility>
+               
+               
+               <show id="q1:keywordList" force="true" />
+               <show id="q1:relatedElements" force="true" />
+               
+               
+               
+               
+               <show id="cm:name" />
+               <show id="cm:title" force="true" />
+               
+               
+               <show id="q1:keywordList" force="true" />
+               
+               
+               
+               <show id="cm:description" force="true" />
+               <show id="cm:content" force="true" />
+               <show id="mimetype" />
+               <show id="app:editInline" force="true" />
+            </field-visibility>
+            <appearance>
+               <field id="cm:name">
+                 <control>
+                    <control-param name="maxLength">255</control-param>
+                 </control>
+               </field>
+                <field id="cm:title">
+                  <control template="/org/alfresco/components/form/controls/textfield.ftl" />
+               </field>
+               
+               <field id="q1:keywordList">
+                  <control template="/org/alfresco/components/form/controls/textfield.ftl" />
+               </field>
+               
+               
+               
+               <field id="cm:content">
+                  <control>
+                     <control-param name="editorAppearance">explorer</control-param>
+                  </control>
+               </field>
+               <field id="mimetype">
+                  <control template="/org/alfresco/components/form/controls/hidden.ftl">
+                     <control-param name="contextProperty">mimeType</control-param>
+                  </control>
+               </field>
+               <field id="app:editInline">
+                  <control template="/org/alfresco/components/form/controls/hidden.ftl">
+                     <control-param name="contextProperty">editInline</control-param>
+                  </control>
+               </field>
+            </appearance>
+         </form>
+      </forms>
+   </config>
+   
+<!-- END customize editor for NEW nodes ================================================== -->
