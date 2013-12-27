@@ -1,5 +1,5 @@
 clear;
-echo "\n\n\n\n=========== HARD ========================================\n\n\n\n";
+echo "\n\n\n\n=========== HARD CYCLE ========================================\n\n\n\n";
 stopAlfresco;
 reinitAlfresco;
 startAlfresco;

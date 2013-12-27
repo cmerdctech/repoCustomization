@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alfresco-config>
+	<!-- Document Library config section -->
+	
+	<!-- START this section causes the model to show up in default editors page 20 content tutorial -->
+	<config evaluator="string-compare" condition="DocumentLibrary">
+		<aspects>
+			<!-- Aspects that a user can see -->
+			<visible>
+				<aspect name="trax1:activity" />
+				</visible>
+			<!-- Aspects that a user can add. Same as "visible" if left empty -->
+			<addable />
+			<!-- Aspects that a user can remove. Same as "visible" if left empty -->
+			<removeable />
+			</aspects>
+		<types>
+			<type name="cm:content">
+				<subtype name="trax1:activity" />
+				</type>
+			</types>
+		￼￼
+		</config>
+	<!-- END this section causes the model to show up in default editors page 20 content tutorial -->
+	
+	
+	<!-- START customize editor for EXISTING nodes ================================================== -->
+	<!-- cm:content type (existing nodes) -->
+	<config evaluator="node-type" condition="trax1:activity">
+		<forms>
+			<!-- Default form configuration for the cm:content type -->
+			<form>
+				<field-visibility>
+					<show id="trax1:relatedactivities" force="true" />
+					<show id="trax1:relatedrubric" force="true" />
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					</field-visibility>
+				<appearance>
+					<field id="trax1:relatedactivities" label-id="assoc.trax1_relatedactivities" />
+					<field id="trax1:relatedrubric" label-id="assoc.trax1_relatedrubric" />
+					<field id="cm:name" label-id="test.trax1_name">
+						<control>
+							<control-param name="maxLength">255</control-param>
+							</control>
+						</field>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+						</field>
+					<field id="cm:content">
+						<control>
+							<control-param name="editorAppearance">explorer</control-param>
+							<control-param name="forceEditor">true</control-param>
+							</control>
+						</field>
+					</appearance>
+				</form>
+			
+			<!-- Document Library pop-up Edit Metadata form -->
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show id="q1:keywordList" force="true" />
+					<show id="q1:relatedElements" force="true" />
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					<!-- tags and categories -->
+					<show id="cm:taggable" for-mode="edit" force="true" />
+					<show id="cm:categories" />
+					</field-visibility>
+				<edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl" />
+				<appearance>
+					<field id="q1:relatedElements" label-id="assoc.q1_relatedElements" />
+					<field id="q1:keywordList">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+						</field>
+					<field id="cm:name">
+						<control>
+							<control-param name="maxLength">255</control-param>
+							</control>
+						</field>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+						</field>
+					<field id="q1:keywordList">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+						</field>
+					<field id="cm:description">
+						<control>
+							<control-param name="activateLinks">true</control-param>
+							</control>
+						</field>
+					<field id="cm:taggable">
+						<control>
+							<control-param name="compactMode">true</control-param>
+							<control-param name="params">aspect=cm:taggable</control-param>
+							<control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+							<control-param name="createNewItemIcon">tag</control-param>
+							</control>
+						</field>
+					<field id="cm:categories">
+						<control>
+							<control-param name="compactMode">true</control-param>
+							</control>
+						</field>
+					</appearance>
+				</form>
+			
+			<!-- Document Library Inline Edit form -->
+			<form id="doclib-inline-edit">
+				<field-visibility>
+					<show id="trax1:relatedactivities" force="true" />
+					<show id="trax1:relatedrubric" force="true" />
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+					</field-visibility>
+				<appearance>
+					<field id="trax1:relatedactivities" label-id="assoc.trax1_relatedactivities" />
+					<field id="trax1:relatedrubric" label-id="assoc.trax1_relatedrubric" />
+					<field id="cm:name">
+						<control>
+							<control-param name="maxLength">255</control-param>
+							</control>
+						</field>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+						</field>
+					<field id="cm:content">
+						<control>
+							<control-param name="editorAppearance">explorer</control-param>
+							<control-param name="forceEditor">true</control-param>
+							</control>
+						</field>
+					</appearance>
+				</form>
+			
+			
+			</forms>
+		</config>
+	<!-- end customize editor for EXISTING nodes ================================================== -->
+	
+	
+	<config evaluator="string-compare" condition="DocumentLibrary">
+
+        <types>
+
+            <type name="cm:folder">
+
+                <subtype name="trax1:activitiesarea"/>
+
+                <subtype name="trax1:levels"/>
+
+                <subtype name="trax1:category"/>
+
+            </type>
+
+            <type name="trax1:activitiesarea">
+
+                <subtype name="cm:folder"/>
+
+            </type>
+
+      </types>
+
+    </config>
+</alfresco-config>

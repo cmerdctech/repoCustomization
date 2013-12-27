@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN'
+'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+
+<!--
+
+This file is read by the system (that is, it crashes when I put content in here.
+I'd really like to use it to point to xml file components.
+
+   <bean id="webframework.configsource" class="org.springframework.extensions.config.source.UrlConfigSource">
+      <constructor-arg>
+         <list>
+            <value>classpath:alfresco/web-extension/web-config-custom.xml</value>
+         </list>
+      </constructor-arg>
+   </bean>
+-->
+</beans>

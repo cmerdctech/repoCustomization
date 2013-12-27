@@ -1,11 +1,19 @@
 #!/bin/sh
+echo "\n\n\n\n========= BUILDING ===========================================\n\n\n\n";
 
+cd /Volumes/tqwhite/Documents/webdev/eLearning/toVQ/eclipseDocs/general/contentModelExtension
+
+ant -v
+
+echo "\n\n\n\n========= STOPPING ===========================================\n\n\n\n";
 
 source .environment-v90
 
 postgresql.v90 start
 
 echo ''>/opt/local/alfresco/tomcat/logs/catalina.out
+
+echo "\n\n\n\n========= STARTING ===========================================\n\n\n\n";
 
 alfresco start
 

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+reset;
+
+source .environment-v90
+
+echo -e "\n\n\n\n========= NOT BUILDING ===========================================\n\n\n\n";
+
+echo -e "\n\n\n\n========= STARTING ===========================================\n\n\n\n";
+
+postgresql.v90 start
+
+echo ''>/opt/local/alfresco/tomcat/logs/catalina.out
+
+alfresco start
+
+tail -f /opt/local/alfresco/tomcat/logs/catalina.out 

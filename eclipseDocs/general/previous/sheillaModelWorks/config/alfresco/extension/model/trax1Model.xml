@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- trax1 Base Model -->
+<model xmlns="http://www.alfresco.org/model/dictionary/1.0" name="trax1:contentmodel">
+	<description>trax1 Content Model</description>
+	<author>Sheilla Norton</author>
+	<version>1.0</version>
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+	<namespaces>
+		<namespace uri="http://alfresco.erdc.k12.mn.us:8080/model/trax1/1.0" prefix="trax1" />
+	</namespaces>
+	
+	<constraints>
+		<constraint name="trax1:status_constraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Draft</value>
+					<value>Pending Approval</value>
+					<value>Current</value>
+					<value>Archived</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="trax1:activitytype_constraint" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>Online</value>
+					<value>PDF</value>
+					<value>WORD</value>
+					<value>Spreadsheet</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	
+	<types>
+		<type name="trax1:activitiesarea">
+			<title>trax1 Activities</title>
+			<parent>cm:folder</parent>
+		</type>
+		
+		<type name="trax1:levels">
+			<title>Needs Level</title>
+			<parent>cm:folder</parent>
+		</type>
+		
+		<type name="trax1:category">
+			<title>trax1 Category</title>
+			<parent>cm:folder</parent>
+		</type>
+		
+		<type name="trax1:activity">
+			<title>trax1 Activity</title>
+			<parent>cm:content</parent>
+			<associations>
+				<association name="trax1:relatedactivities">
+					<title>Trax1 Related Activities</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				<association name="trax1:relatedrubric">
+					<title>Trax1 Related Rubric</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+			</associations>
+			
+			<mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+			</mandatory-aspects>
+		</type>
+		
+	</types>
+	
+	<aspects>
+		<aspect name="trax1:skilllevel">
+			<title>trax1 Skill Level</title>
+			<associations>
+				<child-association name="trax1:skillname">
+					<title>trax1 Skill Name</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>trax1:category</class>
+						<mandatory enforced="true">true</mandatory>
+						<many>false</many>
+					</target>
+					<!-- <duplicate>false</duplicate> -->
+				</child-association>
+			</associations>
+		</aspect>
+		<aspect name="trax1:activitytype">
+			<title>trax1 Activity Type</title>
+			<properties>
+				<property name="trax1:attachmenttype">
+					<title>trax1 Attachment Type</title>
+					<type>d:text</type>
+					<default>PDF</default>
+					<constraints>
+						<constraint ref="trax1:activitytype_constraint" />
+					</constraints>
+				</property>
+			</properties>
+		</aspect>
+		<aspect name="trax1:productrelated">
+			<title>trax1 Related Activity MetaData</title>
+			<properties>
+				<property name="trax1:attributes">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="trax1:skillID">
+					<type>d:int</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="trax1:skilldesc">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+	
+</model>

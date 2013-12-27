@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="q1:learningcontentmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <!-- Optional meta-data about the model -->
+    <description>Cmerdc Model</description>
+    <author>TQ White II - Sheilla Norton</author>
+    <version>1.0</version>
+    <!-- Imports are required to allow references to definitions in other models
+-->
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+	
+    <!-- Introduction of new namespaces defined by this model -->
+    <namespaces>
+        <namespace uri="http://cmerdc.org/model/content/1.0" prefix="q1" />
+    </namespaces>
+    
+    <types>
+        <!-- Initial Learning Content type -->
+        <type name="q1:bundle1">
+            <title>Lesson Bundle</title>
+            <parent>cm:content</parent>
+            
+		<associations>
+			<association name="q1:relatedElements">
+				<title>Related Learning Elements</title>
+				<source>
+					<mandatory>false</mandatory>
+					<many>true</many>
+				</source>
+				<target>
+					<class>q1:bundle1</class>
+					<mandatory>false</mandatory>
+					<many>true</many>
+					</target>
+			</association>
+		</associations>
+            
+            <mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+            	<aspect>q1:basicDoc</aspect>
+            </mandatory-aspects>
+            
+		</type>
+		
+    </types>
+    <aspects>
+        <aspect name="q1:basicDoc">
+            <title>Contributed File Info</title>
+            <properties>
+                <property name="q1:keywordList">
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+            </properties>
+        </aspect>
+        
+    </aspects>
+</model>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="trax1:learningcontentmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <!-- Optional meta-data about the model -->
+    <description>Cmerdc Model</description>
+    <author>TQ White II - Sheilla Norton</author>
+    <version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+	<namespaces>
+		<namespace uri="http://alfresco.erdc.k12.mn.us:8080/model/trax1/1.0" prefix="trax1" />
+	</namespaces>
+	
+	<constraints>
+	
+		<constraint name="trax1:skillset" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+					<value>HF</value>
+					<value>MD</value>
+					<value>Autism</value>
+				</list>
+			</parameter>
+		</constraint>
+
+	</constraints>
+	
+	<types>
+		<type name="trax1:learningContent">
+			<title>Transition Learning Content</title><!-- folder to receive these -->
+			<parent>cm:folder</parent>
+		</type>
+		
+		
+		<type name="trax1:activity">
+			<title>Activity</title>
+			<parent>cm:content</parent>
+			
+			
+            <properties>
+                <property name="trax1:refId">
+					<title>Global Unique</title><!-- GUID -->
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                
+                <property name="trax1:otherId"><!-- skill 40 --> 
+					<title>Other ID (Skill #)</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+
+                <property name="trax1:title"><!-- Taking Effective Notes -->
+					<title>Title</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+            </properties>  
+                
+			<associations>
+				<association name="trax1:projects">
+					<title>Homework Projects</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				
+				<association name="trax1:lessons">
+					<title>Lessons</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				
+				<association name="trax1:certificates">
+					<title>Certificates</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				
+				
+				<association name="trax1:rubric">
+					<title>Rubric</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				<association name="trax1:assessment">
+					<title>Assessment Form</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+				
+				<association name="trax1:summary">
+					<title>Actvitity Summary</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>false</many>
+					</source>
+					<target>
+						<class>trax1:activity</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+			</associations>
+			
+			<mandatory-aspects>
+				<aspect>cm:generalclassifiable</aspect>
+			</mandatory-aspects>
+		</type>
+		
+	</types>
+	
+	<aspects>
+	</aspects>
+	
+</model>
